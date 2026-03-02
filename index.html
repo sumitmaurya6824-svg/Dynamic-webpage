@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dynamic Webpage</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #c8f04d;
+    }
+
+    #box {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      width: 420px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+
+    #box.active { border-color: #c8f04d; }
+
+    #icon  { font-size: 3rem; display: block; margin-bottom: 1rem; }
+    #title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+    #desc  { color: #888; line-height: 1.6; font-size: 0.95rem; }
+
+    .buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+
+    button {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      color: #f0f0f0;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      border-color: #c8f04d;
+      color: #c8f04d;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Dynamic Webpage</h1>
+
+  <div id="box">
+    <span id="icon">👋</span>
+    <p id="title">Hello!</p>
+    <p id="desc">Click a button below to update this content.</p>
+  </div>
+
+  <div class="buttons">
+    <button onclick="update('Sunny Day', 'Temperature is 30°C. Clear skies ahead!', '🌤')">Weather</button>
+    <button onclick="update('Did You Know?', 'Concrete is the most used construction material in the world.', '🏗')">Fact</button>
+    <button onclick="update('Quote', 'The only way to do great work is to love what you do. — Steve Jobs', '💡')">Quote</button>
+    <button onclick="update('Joke', 'Why do civil engineers never look outside in the morning? Nothing to do in the afternoon!', '😂')">Joke</button>
+  </div>
+
+  <script>
+    function update(title, desc, icon) {
+      document.getElementById('icon').textContent  = icon;
+      document.getElementById('title').textContent = title;
+      document.getElementById('desc').textContent  = desc;
+
+      var box = document.getElementById('box');
+      box.classList.add('active');
+      setTimeout(function() { box.classList.remove('active'); }, 500);
+    }
+  </script>
+
+</body>
+</html>

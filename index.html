@@ -1,90 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
   <title>Dynamic Webpage</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f0f0f;
-      color: #f0f0f0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    h1 {
-      font-size: 2rem;
-      color: #c8f04d;
+      font-family: Arial;
+      text-align: center;
+      padding: 60px;
+      background: #1a1a2e;
+      color: white;
     }
 
     #box {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      padding: 2.5rem 3rem;
-      width: 420px;
-      text-align: center;
-      transition: border-color 0.3s;
+      background: #16213e;
+      padding: 40px;
+      margin: 30px auto;
+      width: 380px;
+      border-radius: 12px;
     }
 
-    #box.active { border-color: #c8f04d; }
-
-    #icon  { font-size: 3rem; display: block; margin-bottom: 1rem; }
-    #title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
-    #desc  { color: #888; line-height: 1.6; font-size: 0.95rem; }
-
-    .buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+    #emoji { font-size: 50px; }
+    #title { font-size: 22px; margin: 10px 0; }
+    #desc  { color: #aaa; }
 
     button {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      color: #f0f0f0;
-      padding: 0.7rem 1.4rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
+      margin: 6px;
+      padding: 10px 18px;
+      font-size: 15px;
       cursor: pointer;
-      transition: all 0.2s;
+      border: none;
+      background: #0f3460;
+      color: white;
+      border-radius: 8px;
     }
 
-    button:hover {
-      border-color: #c8f04d;
-      color: #c8f04d;
-      transform: translateY(-2px);
-    }
+    button:hover { background: #e94560; }
   </style>
 </head>
 <body>
 
-  <h1>Dynamic Webpage</h1>
+  <h1>Click & Discover</h1>
 
   <div id="box">
-    <span id="icon">👋</span>
-    <p id="title">Hello!</p>
-    <p id="desc">Click a button below to update this content.</p>
+    <div id="emoji">👆</div>
+    <h2 id="title">Pick a topic!</h2>
+    <p id="desc">Click any button below to see content here.</p>
   </div>
 
-  <div class="buttons">
-    <button onclick="update('Sunny Day', 'Temperature is 30°C. Clear skies ahead!', '🌤')">Weather</button>
-    <button onclick="update('Did You Know?', 'Concrete is the most used construction material in the world.', '🏗')">Fact</button>
-    <button onclick="update('Quote', 'The only way to do great work is to love what you do. — Steve Jobs', '💡')">Quote</button>
-    <button onclick="update('Joke', 'Why do civil engineers never look outside in the morning? Nothing to do in the afternoon!', '😂')">Joke</button>
-  </div>
+  <button onclick="change('🌍', 'Geography', 'The Amazon River releases 20% of all fresh water into the ocean.')">Geography</button>
+  <button onclick="change('🚀', 'Space', 'One day on Venus is longer than one year on Venus!')">Space</button>
+  <button onclick="change('⚽', 'Sports', 'Football is the most watched sport with 4 billion fans worldwide.')">Sports</button>
+  <button onclick="change('🧠', 'Science', 'Your brain uses 20% of your body\'s total energy.')">Science</button>
 
   <script>
-    function update(title, desc, icon) {
-      document.getElementById('icon').textContent  = icon;
-      document.getElementById('title').textContent = title;
-      document.getElementById('desc').textContent  = desc;
-
-      var box = document.getElementById('box');
-      box.classList.add('active');
-      setTimeout(function() { box.classList.remove('active'); }, 500);
+    function change(emoji, title, desc) {
+      document.getElementById('emoji').innerText = emoji;
+      document.getElementById('title').innerText = title;
+      document.getElementById('desc').innerText  = desc;
     }
   </script>
 
